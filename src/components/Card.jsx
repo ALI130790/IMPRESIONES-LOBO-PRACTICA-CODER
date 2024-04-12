@@ -16,17 +16,19 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: colors.teal600,
         width: 250,
-        height: 40,
-        shadowColor: "#000000",
+        height: 60,
+        justifyContent: "center",
+        shadowColor: colors.platinum,
         shadowOffset:{
           width: 3,
           height: 3,
         },
         shadowOpacity: 0.27,
         shadowRadius: 4.65,
-        elevation: 6,
+        elevation: 6, 
         marginBottom: 10,
         marginTop: 10,
         marginRight: 10,
+        borderRadius: 5
     }
 })
