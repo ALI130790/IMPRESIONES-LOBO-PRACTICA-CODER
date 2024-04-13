@@ -5,22 +5,38 @@ import ProductItem from "../components/ProductItem"
 import Search from "../components/Search"
 import { useEffect, useState } from "react"
 
-const ItemListCategory = ({categorySelected = ""}) => {
+const ItemListCategory = ({ categorySelected = "", setCategorySelected = {} }) => {
+
   const [keyWord, setKeyword] = useState("")
   const [productsFiltered, setProductsFiltered] = useState([])
-
+  const [error, setError] = useState("")
 
   useEffect(() => {
-    const productsFilter = products.filter(product => product.title.includes(keyWord))
-    for (const productFilter of productsFilter) {
+    //Filtrar por categoria
 
+    regex = /\d/
+    const hasDigits = (regex.test(keyWord))
+
+    if (hasDigits) {
+      setError("No uses dígitos")
+      return
     }
+
+    const productsPrefiltered = products.filter(product => product.category === categorySelected)
+
+    //Filtrar por nombre
+    const productsFilter = productsPrefiltered.filter(product => product.title.toLocaleLowerCase().includes(keyWord.toLocaleLowerCase()))
     setProductsFiltered(productsFilter)
-  }, [keyWord])
+    setError("")
+  }, [keyWord, categorySelected])
 
   return (
     <View style={styles.flatListContainer} >
-      <Search onSearch={setKeyword} />
+      <Search
+        error={error}
+        onSearch={setKeyword}
+        goBack={() => setCategorySelected("")}
+      />
       <FlatList
         data={productsFiltered}
         renderItem={({ item }) => <ProductItem product={item} />}
