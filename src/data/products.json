@@ -1,20 +1,6 @@
 [
   {
-    "id": 1,
-    "title": "Figuras de Pokemon Gym",
-    "description": "Figuras de Pokemon, pintados detalladamente a mano",
-    "price": 3499,
-    "discountPercentage": 12.96,
-    "rating": 4.5,
-    "stock": 4,
-    "category": "Figuras de Pokemon Gym",
-    "thumbnail": "https://ae01.alicdn.com/kf/S88da226f2926405ba7abe131b6e55a90w.jpg_640x640Q90.jpg_.webp",
-    "images": [
-      "https://ae01.alicdn.com/kf/S88da226f2926405ba7abe131b6e55a90w.jpg_640x640Q90.jpg_.webp"
-    ]
-  },
-  {
-    "id": 2,
+    "id": 1.1,
     "title": "Pokemon Pikachu",
     "description": "Figuras de Pokemon, pintados detalladamente a mano",
     "price": 3499,
@@ -28,7 +14,7 @@
     ]
   },
   {
-    "id": 3,
+    "id": 1.2,
     "title": "Pokemon Bulbasaur",
     "description": "Figuras de Pokemon, pintados detalladamente a mano",
     "price": 3499,
@@ -42,7 +28,7 @@
     ]
   },
   {
-    "id": 4,
+    "id": 1.3,
     "title": "Porta celular de escritorio SIMPLE",
     "description": "Porta celular de escritorio. Varios colores. Medidas 6cm x 6cm aproximadamente",
     "price": 549,
@@ -52,23 +38,49 @@
     "category": "Porta celulares para escritorio",
     "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_936893-MLA43404094127_092020-O.webp",
     "images": [
-      "https://http2.mlstatic.com/D_NQ_NP_936893-MLA43404094127_092020-O.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_706013-MLC52721805419_122022-O.webp",
-      "https://acdn.mitiendanube.com/stores/894/415/products/d_851164-mla46810737835_072021-o-f24be567041b1d991716738905247264-640-0.jpg"
+      "https://http2.mlstatic.com/D_NQ_NP_706013-MLC52721805419_122022-O.webp"
     ]
   },
   {
-    "id": 5,
+    "id": 2.1,
+    "title": "Porta celular de escritorio GAME OF TRHONES",
+    "description": "Porta celular de escritorio. Varios colores. Medidas 6cm x 6cm aproximadamente",
+    "price": 549,
+    "discountPercentage": 12.96,
+    "rating": 4.69,
+    "stock": 4,
+    "category": "Porta celulares para escritorio",
+    "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_936893-MLA43404094127_092020-O.webp",
+    "images": [
+      "https://libria.com.ar/wp-content/uploads/2020/09/GOT-TRONO-3D-003.jpg"
+    ]
+  },
+  {
+    "id": 2.2,
     "title": "Porta celular de escritorio PERSONALIZADO",
     "description": "Porta celular de escritorio. Varios colores. Medidas 6cm x 6cm aproximadamente",
     "price": 549,
     "discountPercentage": 12.96,
     "rating": 4.69,
     "stock": 4,
-    "category": "Porta celulares para escritorio personalizado",
+    "category": "Porta celulares para escritorio",
     "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_936893-MLA43404094127_092020-O.webp",
     "images": [
-      "https://libria.com.ar/wp-content/uploads/2020/09/GOT-TRONO-3D-003.jpg"
+      "https://acdn.mitiendanube.com/stores/894/415/products/d_851164-mla46810737835_072021-o-f24be567041b1d991716738905247264-640-0.jpg"
+    ]
+  },
+  {
+    "id": 2.3,
+    "title": "Porta celular de escritorio SIMPLE",
+    "description": "Porta celular de escritorio. Varios colores. Medidas 6cm x 6cm aproximadamente",
+    "price": 549,
+    "discountPercentage": 12.96,
+    "rating": 4.69,
+    "stock": 4,
+    "category": "Porta celulares para escritorio",
+    "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_936893-MLA43404094127_092020-O.webp",
+    "images": [
+      "https://http2.mlstatic.com/D_NQ_NP_936893-MLA43404094127_092020-O.webp"
     ]
   }
 ]

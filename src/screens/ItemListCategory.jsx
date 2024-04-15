@@ -5,46 +5,63 @@ import ProductItem from "../components/ProductItem"
 import Search from "../components/Search"
 import { useEffect, useState } from "react"
 
-const ItemListCategory = ({ categorySelected = "", setCategorySelected = {} }) => {
+const ItemListCategory = ({ 
+  categorySelected = "", 
+  setCategorySelected = () => {},
+  setItemIdSelected = () => {} 
+}) => {
 
   const [keyWord, setKeyword] = useState("")
   const [productsFiltered, setProductsFiltered] = useState([])
   const [error, setError] = useState("")
 
   useEffect(() => {
-    //Filtrar por categoria
+    //Products filtered by category
 
-    regex = /\d/
-    const hasDigits = (regex.test(keyWord))
-
+    //No digits validation
+    const regexDigits = /\d/
+    const hasDigits = regexDigits.test(keyWord)
     if (hasDigits) {
-      setError("No uses dígitos")
+      setError("Don't use digits")
+      return
+    }
+    //3 or more characters
+    const regexThreeOrMore = /[a-zA-Z]{3,}/
+    const hasThreeOrMoreChars = regexThreeOrMore.test(keyWord)
+
+    if (!hasThreeOrMoreChars && keyWord.length) {
+      setError("Type 3 or more characters")
       return
     }
 
-    const productsPrefiltered = products.filter(product => product.category === categorySelected)
-
-    //Filtrar por nombre
-    const productsFilter = productsPrefiltered.filter(product => product.title.toLocaleLowerCase().includes(keyWord.toLocaleLowerCase()))
+    const productsPrefiltered = products.filter(
+      (product) => product.category === categorySelected
+    )
+    //Product filtered by name
+    const productsFilter = productsPrefiltered.filter((product) =>
+      product.title.toLocaleLowerCase().includes(keyWord.toLocaleLowerCase())
+    )
     setProductsFiltered(productsFilter)
     setError("")
   }, [keyWord, categorySelected])
 
   return (
-    <View style={styles.flatListContainer} >
+    <View style={styles.flatListContainer}>
       <Search
         error={error}
         onSearch={setKeyword}
         goBack={() => setCategorySelected("")}
       />
       <FlatList
+        
         data={productsFiltered}
-        renderItem={({ item }) => <ProductItem product={item} />}
+        renderItem={({ item }) => <ProductItem product={item} setItemIdSelected= {setItemIdSelected}/>}
         keyExtractor={(producto) => producto.id}
       />
     </View>
   )
 }
+
 
 export default ItemListCategory
 
