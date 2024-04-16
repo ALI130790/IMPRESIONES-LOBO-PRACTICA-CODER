@@ -6,14 +6,14 @@ import { colors } from '../constants/colors'
 const ProductItem = ({
   product,
   setProductSelected = () => {},
-  setItemIdSelected = () => {},
+  navigation,
 }) => {
-  // const {height, width } = useWindowDimensions()
-
- 
   return (
     <Card style={styles.additionalStylesCard}>
-      <Pressable style={styles.pressable} onPress ={()=> setItemIdSelected(product.id)}>
+      <Pressable
+        style={styles.pressable}
+        onPress={() => navigation.navigate('ItemDetail', {productId : product.id} )}
+      >
         <Text style={styles.textCategory}>{product.title}</Text>
         <Image
           resizeMode="cover"
@@ -26,7 +26,7 @@ const ProductItem = ({
 }
 
 export default ProductItem
- 
+
 
 const styles = StyleSheet.create({
   image: {

@@ -5,16 +5,18 @@ import ProductItem from "../components/ProductItem"
 import Search from "../components/Search"
 import { useEffect, useState } from "react"
 
-const ItemListCategory = ({ 
-  categorySelected = "", 
+const ItemListCategory = ({
+  
   setCategorySelected = () => {},
-  setItemIdSelected = () => {} 
+  navigation,
+  route
 }) => {
 
   const [keyWord, setKeyword] = useState("")
   const [productsFiltered, setProductsFiltered] = useState([])
   const [error, setError] = useState("")
 
+  const {category : categorySelected} = route.params
   useEffect(() => {
     //Products filtered by category
 
@@ -50,12 +52,13 @@ const ItemListCategory = ({
       <Search
         error={error}
         onSearch={setKeyword}
-        goBack={() => setCategorySelected("")}
+        goBack={() => navigation.goBack()}
       />
       <FlatList
-        
         data={productsFiltered}
-        renderItem={({ item }) => <ProductItem product={item} setItemIdSelected= {setItemIdSelected}/>}
+        renderItem={({ item }) => (
+          <ProductItem product={item} navigation={navigation}/>
+        )}
         keyExtractor={(producto) => producto.id}
       />
     </View>
