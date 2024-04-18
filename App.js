@@ -4,6 +4,7 @@ import { useFonts } from "expo-font"
 import Navigator from "./src/navigation/Navigator"
 
 
+
 const App = () => {
   const [fontsLoaded, fontError] = useFonts({
     Josefin: require("./assets/JosefinSans-Regular.ttf"),
