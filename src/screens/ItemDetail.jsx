@@ -9,8 +9,6 @@ const ItemDetail = ({route, navigation }) => {
   const { width, height } = useWindowDimensions()
 
   const {productId : idSelected} = route.params
-  //Landscape = horizontal
-  //Portrait = vertical
 
   useEffect(() => {
     if (width > height) setOrientation("landscape")
@@ -27,7 +25,7 @@ const ItemDetail = ({route, navigation }) => {
 
   return (
     <View>
-      <Button onPress={() => navigation.goBack()} title="Go back" />
+      <Button onPress={() => navigation.goBack()} title="Volver a la pagina anterior" />
       {product ? (
         <View
           style={
@@ -45,7 +43,7 @@ const ItemDetail = ({route, navigation }) => {
             <Text>{product.title}</Text>
             <Text>{product.description}</Text>
             <Text style={styles.price}>${product.price}</Text>
-            <Button title="Add cart"></Button>
+            <Button title="Agregar al carrito"></Button>
           </View>
         </View>
       ) : null}

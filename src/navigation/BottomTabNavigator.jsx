@@ -6,11 +6,8 @@ import { colors } from "../constants/colors"
 import Header from "../components/Header"
 import { FontAwesome5, FontAwesome6 } from "@expo/vector-icons"
 import { Ionicons } from "@expo/vector-icons"
-import CartTemp from "../screens/CartTemp"
-import OrdersTemp from "../screens/OrdersTemp"
 import CartStack from "./CartSatckNavigator"
 import OrderStack from "./OrderStackNavigator"
-
 
 const Tab = createBottomTabNavigator()
 

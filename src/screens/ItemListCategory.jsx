@@ -18,28 +18,28 @@ const ItemListCategory = ({
 
   const {category : categorySelected} = route.params
   useEffect(() => {
-    //Products filtered by category
+    //Filtrar por categoria
 
-    //No digits validation
     const regexDigits = /\d/
     const hasDigits = regexDigits.test(keyWord)
     if (hasDigits) {
       setError("Don't use digits")
       return
     }
-    //3 or more characters
+   
     const regexThreeOrMore = /[a-zA-Z]{3,}/
     const hasThreeOrMoreChars = regexThreeOrMore.test(keyWord)
 
     if (!hasThreeOrMoreChars && keyWord.length) {
-      setError("Type 3 or more characters")
+      setError("Escriba 3 o más dígitos")
       return
     }
 
     const productsPrefiltered = products.filter(
       (product) => product.category === categorySelected
     )
-    //Product filtered by name
+    
+    //Filtrado por nombre
     const productsFilter = productsPrefiltered.filter((product) =>
       product.title.toLocaleLowerCase().includes(keyWord.toLocaleLowerCase())
     )
