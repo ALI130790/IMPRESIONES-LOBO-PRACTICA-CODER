@@ -4,6 +4,7 @@ import { useFonts } from "expo-font"
 import Navigator from "./src/navigation/Navigator"
 import { Provider } from "react-redux"
 import store from "./src/store"
+import Carousel from "./src/components/carousel/Carousel"
 
 const App = () => {
   const [fontsLoaded, fontError] = useFonts({
@@ -16,8 +17,9 @@ const App = () => {
 
   if (fontsLoaded && !fontError) {
     return (
-      <SafeAreaView style={styles.container}>
+      <SafeAreaView style={styles.container}>  
         <Provider store={store}>
+        <Carousel/>
           <Navigator />
         </Provider>
       </SafeAreaView>

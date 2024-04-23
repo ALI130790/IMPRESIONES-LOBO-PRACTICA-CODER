@@ -70,6 +70,7 @@ const BottomTabNavigator = () => {
                 }}
             />
             
+            
         </Tab.Navigator>
     )
 }
