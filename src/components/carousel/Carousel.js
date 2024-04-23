@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   StyleSheet,
   Text,
@@ -25,11 +25,11 @@ const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
 
 const ANCHO_CONTENEDOR = width * 0.7;
-const ESPACIO_LATERAL = (width - ANCHO_CONTENEDOR) / 2;
+const ESPACIO_CONTENEDOR = (width - ANCHO_CONTENEDOR) / 2;
 const ESPACIO = 10;
 const ALTURA_BACKDROP = height * 0.5;
 
-function BackDrop({ scrollX }) {
+function Backdrop({ scrollX }) {
   return (
     <View
       style={[
@@ -97,7 +97,7 @@ export default function Carousel() {
         horizontal={true}
         snapToAlignment="start"
         contentContainerStyle={{
-          paddingTop: 200,
+          paddingTop: 80,
           paddingHorizontal: ESPACIO_CONTENEDOR,
         }}
         snapToInterval={ANCHO_CONTENEDOR}
@@ -115,6 +115,7 @@ export default function Carousel() {
           const scrollY = scrollX.interpolate({
             inputRange,
             outputRange: [0, -50, 0],
+            
           });
 
           return (
@@ -125,7 +126,7 @@ export default function Carousel() {
                   padding: ESPACIO,
                   borderRadius: 34,
                   alignItems: "center",
-                  transform: [{ translateY: scrllY }],
+                  transform: [{ translateY: scrollY }],
                 }}
                 >
                 <Image
