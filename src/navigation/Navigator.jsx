@@ -9,7 +9,7 @@ const Navigator = () => {
   return (
     <NavigationContainer>
         <BottomTabNavigator/>
-       
+        
     </NavigationContainer>
   )
 }

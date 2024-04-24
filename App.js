@@ -17,9 +17,9 @@ const App = () => {
 
   if (fontsLoaded && !fontError) {
     return (
-      <SafeAreaView style={styles.container}>  
+      <SafeAreaView style={styles.container}>
+           <Carousel/>
         <Provider store={store}>
-        <Carousel/>
           <Navigator />
         </Provider>
       </SafeAreaView>

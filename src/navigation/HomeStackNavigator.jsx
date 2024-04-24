@@ -24,6 +24,7 @@ const HomeStackNavigator = () => {
                 component={ItemDetail}
                 name="ItemDetail"
             />
+        
         </Stack.Navigator>
     )
 }

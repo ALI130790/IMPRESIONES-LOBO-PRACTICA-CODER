@@ -4,10 +4,11 @@ import products from "../data/products.json"
 import ProductItem from "../components/ProductItem"
 import Search from "../components/Search"
 import { useEffect, useState } from "react"
+import { useGetProductsByCategoryQuery } from "../services/shopService"
+
 
 const ItemListCategory = ({
-  
-  setCategorySelected = () => {},
+  setCategorySelected = () => { },
   navigation,
   route
 }) => {
@@ -16,17 +17,18 @@ const ItemListCategory = ({
   const [productsFiltered, setProductsFiltered] = useState([])
   const [error, setError] = useState("")
 
-  const {category : categorySelected} = route.params
+  const { category: categorySelected } = route.params
+
+  const { data: productsFetched, error: errorFromFetch, isLoading } = useGetProductsByCategoryQuery(categorySelected)
+
   useEffect(() => {
     //Filtrar por categoria
-
     const regexDigits = /\d/
     const hasDigits = regexDigits.test(keyWord)
     if (hasDigits) {
       setError("Don't use digits")
       return
     }
-   
     const regexThreeOrMore = /[a-zA-Z]{3,}/
     const hasThreeOrMoreChars = regexThreeOrMore.test(keyWord)
 
@@ -38,14 +40,16 @@ const ItemListCategory = ({
     const productsPrefiltered = products.filter(
       (product) => product.category === categorySelected
     )
-    
+
     //Filtrado por nombre
-    const productsFilter = productsPrefiltered.filter((product) =>
-      product.title.toLocaleLowerCase().includes(keyWord.toLocaleLowerCase())
-    )
-    setProductsFiltered(productsFilter)
-    setError("")
-  }, [keyWord, categorySelected])
+    if (!isLoading) {
+      const productsFilter = productsFetched.filter((product) =>
+        product.title.toLocaleLowerCase().includes(keyWord.toLocaleLowerCase())
+      )
+      setProductsFiltered(productsFilter)
+      setError("")
+    }
+  }, [keyWord, categorySelected, productsFetched, isLoading])
 
   return (
     <View style={styles.flatListContainer}>
@@ -57,14 +61,13 @@ const ItemListCategory = ({
       <FlatList
         data={productsFiltered}
         renderItem={({ item }) => (
-          <ProductItem product={item} navigation={navigation}/>
+          <ProductItem product={item} navigation={navigation} />
         )}
         keyExtractor={(producto) => producto.id}
       />
     </View>
   )
 }
-
 
 export default ItemListCategory
 
