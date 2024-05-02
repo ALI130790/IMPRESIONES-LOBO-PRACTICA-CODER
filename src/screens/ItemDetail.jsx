@@ -1,9 +1,11 @@
-import { Button, 
+import { 
+  Button, 
   Image, 
   StyleSheet, 
   Text, 
   View, 
-  useWindowDimensions } from "react-native"
+  useWindowDimensions 
+} from "react-native"
 import React, { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { addCartItem } from "../features/Cart/cartSlice"
