@@ -4,28 +4,25 @@ import Home from "../screens/Home"
 import ItemListCategory from "../screens/ItemListCategory"
 import ItemDetail from "../screens/ItemDetail"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
-import LoginScreen from "../screens/LoginScreen"
-import SignupScreen from "../screens/SignupScreen"
+import MyProfile from "../screens/MyProfile"
+import ImageSelector from "../screens/ImageSelector"
 
 const Stack = createNativeStackNavigator()
 
-const AuthStackNavigator = () => {
+const MyProfileStackNavigator = () => {
     return (
         <Stack.Navigator
-            initialRouteName="Login"
+            initialRouteName="My profile Stack"
             screenOptions={{
                 headerShown: false,
             }}
         >
-            <Stack.Screen component={LoginScreen} name="Login" />
-            <Stack.Screen
-                component={SignupScreen}
-                name="Signup"
-            />
+            <Stack.Screen component={MyProfile} name="My Profile Stack" />
+            <Stack.Screen component={ImageSelector} name="Image selector" />
         </Stack.Navigator>
     )
 }
 
-export default AuthStackNavigator
+export default MyProfileStackNavigator
 
 const styles = StyleSheet.create({})

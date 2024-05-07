@@ -12,7 +12,7 @@ const Cart = () => {
     const onConfirmOrder = () => {
         triggerPostOrder({items: CartData, user: 'Alicia', total})
     }
-
+   
     return (
         <View style={styles.container}>
             <FlatList

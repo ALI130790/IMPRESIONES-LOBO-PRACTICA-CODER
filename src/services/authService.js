@@ -10,7 +10,7 @@ export const authApi = createApi({
                 url: `/accounts:signUp?key=${apiKey}`,
                 method: "POST",
                 body: auth,
-            }),
+            }), 
         }),
         
         signIn: builder.mutation({

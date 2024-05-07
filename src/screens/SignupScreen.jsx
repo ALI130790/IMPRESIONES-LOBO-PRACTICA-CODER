@@ -9,7 +9,7 @@ import { useSignUpMutation } from "../services/authService";
 import { setUser } from "../features/User/userSlice";
 import { signupSchema } from "../validations/authSchema"; 
 
-const SignupScreen = ({ navigation }) => {
+const  SignupScreen = ({ navigation }) => {
     const [email, setEmail] = useState("");
     const [errorMail, setErrorMail] = useState("");
     const [password, setPassword] = useState("");

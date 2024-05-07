@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import React from 'react'
+import React, {useState} from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import BottomTabNavigator from './BottomTabNavigator'
 import AuthStackNavigator from './AuthStackNavigator'
@@ -13,6 +13,7 @@ const Navigator = () => {
   return (
     <NavigationContainer>
         {user ? <BottomTabNavigator/> : <AuthStackNavigator/> }
+        
     </NavigationContainer>
   )
 }

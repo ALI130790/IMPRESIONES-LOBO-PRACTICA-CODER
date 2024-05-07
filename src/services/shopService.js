@@ -4,6 +4,7 @@ import { baseUrl } from '../databases/realtimeDatabase'
 export const shopApi = createApi({
     reducerPath: "shopApi",
     baseQuery: fetchBaseQuery({ baseUrl: baseUrl }),
+    tagTypes: ['profileImageGet'],
     endpoints: (builder) => ({
         getCategories: builder.query({
             query: () => `categories.json`,
@@ -14,7 +15,7 @@ export const shopApi = createApi({
             transformResponse: (response) => {
                 const responseTransformed = Object.values(response)
                 return responseTransformed
-            }
+            },
         }),
         getProductById: builder.query({
             query: (productId) =>
@@ -23,14 +24,28 @@ export const shopApi = createApi({
                 const responseTransformed = Object.values(response)
                 if (responseTransformed.length) return responseTransformed[0]
                 return null
-            }
+            },
         }),
         postOrder: builder.mutation({
             query: ({ ...order }) => ({
                 url: 'orders.json',
                 method: 'POST',
                 body: order
-            })
+            }),
+        }),
+        getProfileImage: builder.query({
+            query: (localId) => `profileImages/${localId}.json`,
+            providesTags: ['profileImageGet']
+        }),
+        postProfileImage: builder.mutation({
+            query: ({image, localId}) => ({
+                url: `profileImages/${localId}.json`,
+                method: "PUT",
+                body: {
+                    image: image
+                },
+            }),
+            invalidatesTags: ['profileImageGet'] 
         }),
     })
 })
@@ -39,6 +54,8 @@ export const {
     useGetCategoriesQuery,
     useGetProductByIdQuery,
     useGetProductsByCategoryQuery,
-    usePostOrderMutation
+    usePostOrderMutation,
+    useGetProfileImageQuery,
+    usePostProfileImageMutation,
 } = shopApi
 
