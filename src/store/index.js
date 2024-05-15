@@ -1,5 +1,4 @@
-import { configureStore, createReducer  } from "@reduxjs/toolkit";
-import counterReducer from "../features/Counter/counterSlice"
+import { configureStore } from "@reduxjs/toolkit";
 import cartReducer from "../features/Cart/cartSlice"
 import shopReducer from "../features/Shop/shopSlice"
 import {shopApi} from "../services/shopService";
@@ -9,7 +8,6 @@ import authReducer from "../features/User/userSlice"
 
 const store = configureStore({
     reducer: {
-        counter: counterReducer,
         shop: shopReducer,
         cart: cartReducer,
         auth: authReducer,

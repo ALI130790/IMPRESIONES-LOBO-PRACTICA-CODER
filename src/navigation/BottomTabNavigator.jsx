@@ -10,7 +10,6 @@ import { FontAwesome5, FontAwesome6 } from "@expo/vector-icons"
 import { Ionicons } from "@expo/vector-icons"
 import MyProfileStackNavigator from "./MyProfileStackNavigator"
 
-
 const Tab = createBottomTabNavigator()
 
 const BottomTabNavigator = () => {
@@ -25,7 +24,7 @@ const BottomTabNavigator = () => {
             })}
         >
             <Tab.Screen
-                name="Shop"
+                name="CATEGORIAS"
                 component={HomeStackNavigator}
                 options={{
                     tabBarIcon: ({ focused }) => {
@@ -42,7 +41,7 @@ const BottomTabNavigator = () => {
                 }}
             />
             <Tab.Screen
-                name="Cart"
+                name="CARRITO DE COMPRAS"
                 component={CartStack}
                 options={{
                     tabBarIcon: ({ focused }) => {
@@ -59,7 +58,7 @@ const BottomTabNavigator = () => {
                 }}
             />
             <Tab.Screen
-                name="Orders"
+                name="ORDENES DE COMPRA"
                 component={OrderStack}
                 options={{
                     tabBarIcon: ({ focused }) => {
@@ -72,7 +71,7 @@ const BottomTabNavigator = () => {
                 }}
             />
              <Tab.Screen 
-                name="My profile"
+                name="MI PERFIL"
                 component={MyProfileStackNavigator}
                 options={{
                     tabBarIcon: ({ focused }) => {

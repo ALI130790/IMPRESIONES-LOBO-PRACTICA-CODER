@@ -5,12 +5,12 @@ import { useSelector } from 'react-redux';
 import { usePostOrderMutation } from "../services/shopService"
 
 const Cart = () => {
-
+    const {localId} = useSelector(state => state.auth.value)
     const { items: CartData, total } = useSelector(state => state.cart.value)
     const [triggerPostOrder, result] = usePostOrderMutation()
 
     const onConfirmOrder = () => {
-        triggerPostOrder({items: CartData, user: 'Alicia', total})
+        triggerPostOrder({items: CartData, user: localId, total})
     }
    
     return (
