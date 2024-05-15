@@ -12,7 +12,7 @@ export const cartSlice = createSlice({
     },
     reducers: {
         addCartItem: (state, { payload }) => {
-         
+          //Lógica para añadir producto.
             const productRepeated = state.value.items.find(
                 (item) => item.id === payload.id
             )
@@ -50,7 +50,7 @@ export const cartSlice = createSlice({
             }
         },
         removeCartItem: (state, { payload }) => {
-            //Logic to remove product
+           
         },
     },
 })

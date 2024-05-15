@@ -1,25 +1,36 @@
 import { Image, StyleSheet, View } from "react-native";
 import React from "react";
 import AddButton from "../components/AddButton";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useGetProfileImageQuery } from "../services/shopService";
+import { clearUser } from "../features/User/userSlice";
+import { truncateSessionsTable } from "../persistence";
 
-const MyProfile = ({navigation}) => {
-    
-    const {imageCamera, localId} = useSelector(state => state.auth.value)
-    const {data: imageFromBase} = useGetProfileImageQuery(localId)
+const MyProfile = ({ navigation }) => {
+
+    const dispatch = useDispatch()
+
+    const { imageCamera, localId } = useSelector((state) => state.auth.value)
+    const { data: imageFromBase } = useGetProfileImageQuery(localId)
 
     const launchCamera = async () => {
         navigation.navigate('Image selector')
-    };
+    }
+    const launchLocation = async () => {
+        navigation.navigate('List Address')
+    }
+    const signOut = async () => {
+        const response = await truncateSessionsTable()
+        dispatch(clearUser())
+    }
 
     const defaultImageRoute = "../../assets/images/defaultProfile.png"
 
     return (
         <View style={styles.container}>
-            {imageFromBase || imageCamera  ? (
+            {imageFromBase || imageCamera ? (
                 <Image
-                    source={{uri: imageFromBase?.image || imageCamera}}
+                    source={{ uri: imageFromBase?.image || imageCamera }}
                     style={styles.image}
                     resizeMode="cover"
                 />
@@ -30,11 +41,17 @@ const MyProfile = ({navigation}) => {
                     resizeMode="cover"
                 />
             )}
-            <AddButton onPress={launchCamera} title="Add profile picture" />
+
+            <AddButton onPress={launchCamera}
+                title={imageFromBase || imageCamera
+                    ? "Modificar foto de perfil"
+                    : "Add profile picture"}
+            />
+            <AddButton onPress={launchLocation} title="Mi dirección" />
+            <AddButton onPress={signOut} title="Eliminar cuenta" />
         </View>
     );
 };
-
 export default MyProfile;
 
 const styles = StyleSheet.create({

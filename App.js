@@ -1,10 +1,19 @@
-import {Platform, SafeAreaView, StatusBar, StyleSheet} from "react-native"
+import { Platform, SafeAreaView, StatusBar, StyleSheet } from "react-native"
 import { colors } from "./src/constants/colors"
 import { useFonts } from "expo-font"
 import Navigator from "./src/navigation/Navigator"
 import { Provider } from "react-redux"
 import store from "./src/store"
 import Carousel from "./src/components/carousel/Carousel"
+import { initSQLiteDB } from "./src/persistence"
+
+(async () => {
+  try {
+    const response = await initSQLiteDB()
+  } catch (error) {
+
+  }
+})()
 
 const App = () => {
   const [fontsLoaded, fontError] = useFonts({
@@ -18,7 +27,7 @@ const App = () => {
   if (fontsLoaded && !fontError) {
     return (
       <SafeAreaView style={styles.container}>
-           
+
         <Provider store={store}>
           <Navigator />
         </Provider>

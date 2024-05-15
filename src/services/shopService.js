@@ -1,10 +1,10 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { baseUrl } from '../databases/realtimeDatabase'
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
+import { baseUrl } from "../databases/realtimeDatabase"
 
 export const shopApi = createApi({
     reducerPath: "shopApi",
     baseQuery: fetchBaseQuery({ baseUrl: baseUrl }),
-    tagTypes: ['profileImageGet'],
+    tagTypes: ['profileImageGet', 'locationGet'],
     endpoints: (builder) => ({
         getCategories: builder.query({
             query: () => `categories.json`,
@@ -27,16 +27,17 @@ export const shopApi = createApi({
             },
         }),
         postOrder: builder.mutation({
-            query: ({ ...order }) => ({
+            query: ({...order}) => ({
                 url: 'orders.json',
                 method: 'POST',
                 body: order
-            }),
+            })
         }),
         getProfileImage: builder.query({
             query: (localId) => `profileImages/${localId}.json`,
             providesTags: ['profileImageGet']
         }),
+        
         postProfileImage: builder.mutation({
             query: ({image, localId}) => ({
                 url: `profileImages/${localId}.json`,
@@ -47,7 +48,24 @@ export const shopApi = createApi({
             }),
             invalidatesTags: ['profileImageGet'] 
         }),
-    })
+        getLocation: builder.query({
+            query: (localId) => `locations/${localId}.json`,
+            providesTags: ['locationGet']
+        }),
+        postLocation: builder.mutation({
+            query: ({location, localId}) => ({
+                url: `locations/${localId}.json`,
+                method: "PUT",
+                body: {
+                    latitude: location.latitude,
+                    longitude: location.longitude,
+                    address: location.address,
+                    updatedAt: location.updatedAt
+                },
+            }),
+            invalidatesTags: ['locationGet'] 
+        }),
+    }),
 })
 
 export const {
@@ -57,5 +75,7 @@ export const {
     usePostOrderMutation,
     useGetProfileImageQuery,
     usePostProfileImageMutation,
+    useGetLocationQuery,
+    usePostLocationMutation
 } = shopApi
 

@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: 'red',
         fontFamily: 'Josefin',
-        fontStyle: 'italic',
+        
     },
     input: {
         width: '90%',

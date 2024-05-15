@@ -3,29 +3,41 @@ import React, { useState, useEffect } from "react"
 import { colors } from "../constants/colors"
 import InputForm from "../components/inputForm"
 import SubmitButton from "../components/submitButton"
-import {useSignInMutation} from '../services/authService'
+import { useSignInMutation } from '../services/authService'
 import { setUser } from "../features/User/userSlice"
+import { useDispatch } from "react-redux"
+import { insertSession } from "../persistence"
 
 const LoginScreen = ({ navigation }) => {
-
+    const dispatch = useDispatch()
     const [triggerSignIn, result] = useSignInMutation()
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
 
-    useEffect(()=> {
-        if (result.isSuccess) {
-            console.log("🕵🏻 ~ useEffect ~ result:", result)
-            dispatch(
-                setUser({
-                    email: result.data.email,
-                    idToken: result.data.idToken
+    useEffect(() => {
+        if (result?.data && result.isSuccess) {
+            insertSession({
+                email: result.data.email,
+                localId: result.data.localId,
+                token: result.data.idToken,
+            })
+                .then((response) => {
+                    dispatch(
+                        setUser({
+                            email: result.data.email,
+                            idToken: result.data.idToken,
+                            localId: result.data.localId,
+                        })
+                    )
                 })
-            )
+                .catch((err) => {
+                    console.log(err)
+                })
         }
     }, [result])
 
     const onSubmit = () => {
-        triggerSignIn()
+        triggerSignIn({ email, password })
     }
 
     return (
@@ -44,9 +56,9 @@ const LoginScreen = ({ navigation }) => {
                     error={""}
                     isSecure={true}
                 />
-                <SubmitButton 
-                onPress={onSubmit} 
-                title="Send" 
+                <SubmitButton
+                    onPress={onSubmit}
+                    title="Enviar"
                 />
                 <Text style={styles.sub}>¿No tienes una cuenta?</Text>
                 <Pressable onPress={() => navigation.navigate("Signup")}>
@@ -78,7 +90,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 22,
-        fontFamily: "Josefin",
+
     },
     sub: {
         fontSize: 14,

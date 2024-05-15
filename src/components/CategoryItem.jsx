@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, Pressable } from "react-native"
+import { Dimensions, Pressable, StyleSheet, Text, View} from "react-native"
 import React from "react"
 import Card from "./Card"
 import { colors } from "../constants/colors"

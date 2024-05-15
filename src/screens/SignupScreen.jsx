@@ -23,7 +23,6 @@ const  SignupScreen = ({ navigation }) => {
 
     useEffect(()=> {
         if (result.isSuccess) {
-            console.log("🕵🏻 ~ useEffect ~ result:", result)
             dispatch(
                 setUser({
                     email: result.data.email,
@@ -106,16 +105,16 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 22,
-        fontFamily: "Josefin",
+        
     },
     sub: {
         fontSize: 14,
-        fontFamily: "Josefin",
+        
         color: "black",
     },
     subLink: {
         fontSize: 14,
-        fontFamily: "Josefin",
+        
         color: "blue",
     },
 });

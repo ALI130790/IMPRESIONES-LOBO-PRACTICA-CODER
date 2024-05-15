@@ -1,6 +1,5 @@
 import { FlatList, StyleSheet, Text, View } from "react-native"
 import { colors } from "../constants/colors"
-import products from "../data/products.json"
 import ProductItem from "../components/ProductItem"
 import Search from "../components/Search"
 import { useEffect, useState } from "react"
@@ -12,7 +11,7 @@ const ItemListCategory = ({
   navigation,
   route
 }) => {
-
+ 
   const [keyWord, setKeyword] = useState("")
   const [productsFiltered, setProductsFiltered] = useState([])
   const [error, setError] = useState("")
@@ -26,7 +25,7 @@ const ItemListCategory = ({
     const regexDigits = /\d/
     const hasDigits = regexDigits.test(keyWord)
     if (hasDigits) {
-      setError("Don't use digits")
+      setError("No uses dígitos")
       return
     }
     const regexThreeOrMore = /[a-zA-Z]{3,}/
@@ -37,11 +36,7 @@ const ItemListCategory = ({
       return
     }
 
-    const productsPrefiltered = products.filter(
-      (product) => product.category === categorySelected
-    )
-
-    //Filtrado por nombre
+    //Filtrar por nombre
     if (!isLoading) {
       const productsFilter = productsFetched.filter((product) =>
         product.title.toLocaleLowerCase().includes(keyWord.toLocaleLowerCase())

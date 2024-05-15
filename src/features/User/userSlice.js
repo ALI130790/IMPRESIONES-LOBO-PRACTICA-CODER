@@ -21,7 +21,6 @@ export const authSlice = createSlice({
             state.value.token = null
         },
         setCameraImage: (state, {payload}) => {
-            //Add logic
             state.value.imageCamera = payload
         }
     }

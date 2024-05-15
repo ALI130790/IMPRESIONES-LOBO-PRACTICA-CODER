@@ -592,13 +592,81 @@
     "id": 48,
     "title": "Porta llaves",
     "description": "Porta llaves HOME",
-    "price": 1000,
+    "price": 10000,
     "rating": 5,
     "category": "COCINA",
     "thumbnail": "https://fbi.cults3d.com/uploaders/16747176/illustration-file/f276001e-0376-4f90-90d8-6e4171120361/photo_2023-12-26_1https://fbi.cults3d.com/uploaders/16015188/illustration-file/163919c1-35a0-424f-a0a6-973777404340/IMG_2515.jpeg",
     "images": [
       "https://fbi.cults3d.com/uploaders/16015188/illustration-file/163919c1-35a0-424f-a0a6-973777404340/IMG_2515.jpeg",
       "https://fbi.cults3d.com/uploaders/17546789/illustration-file/109c479e-3b97-4563-b846-d3889bcf66dc/IMG_20211007_193041_009.jpg"
+    ]
+  },
+  {
+    "id": 49,
+    "title": "Velociraptor articulado",
+    "description": "Figura pintada detalladamente a mano. Articulado. Tamaño: 15cm aprox",
+    "price": 10000,
+    "rating": 5,
+    "category": "FIGURAS DE ESCRITORIO",
+    "thumbnail": "https://stlflix.b-cdn.net/Articulated_Velociraptor_1_18144e02f9.jpg?format=webp&width=700",
+    "images": [
+      "https://stlflix.b-cdn.net/Articulated_Velociraptor_1_18144e02f9.jpg?format=webp&width=700",
+      "https://stlflix.b-cdn.net/Articulated_Velociraptor_6_9ffa253080.jpg?format=webp&width=700"
+    ]
+  },
+  {
+    "id": 50,
+    "title": "T-REX articulado",
+    "description": "Figura pintada detalladamente a mano. Articulado. Tamaño: 15cm aprox",
+    "price": 10000,
+    "rating": 5,
+    "category": "FIGURAS DE ESCRITORIO",
+    "thumbnail": "https://stlflix.b-cdn.net/Articulated_T_Rex_1_ee926d63eb.jpg?format=webp&width=700",
+    "images": [
+      "https://stlflix.b-cdn.net/Articulated_T_Rex_1_ee926d63eb.jpg?format=webp&width=700",
+      "https://stlflix.b-cdn.net/Articulated_T_Rex_2_Photoroom_6_a639718498.jpg?format=webp&width=700"
+    ]
+  },
+  {
+    "id": 51,
+    "title": "Burdeos, el pulpo porta vinos",
+    "description": "Figura pintada detalladamente a mano. Se adapta a una botella de 9cm de diametro",
+    "price": 15000,
+    "rating": 5,
+    "category": "COCINA",
+    "thumbnail": "https://stlflix.b-cdn.net/00_2_d8d5480bf5_350e8bd0a7.png?format=webp&width=700",
+    "images": [
+      "https://stlflix.b-cdn.net/00_2_d8d5480bf5_350e8bd0a7.png?format=webp&width=700",
+      "https://stlflix.b-cdn.net/IMG_20240501_WA_0006_14ff006581.jpeg?width=320",
+      "https://imgtransformationstack-s3sampleoriginalimagebucke-1szj1tof7cts2.s3.amazonaws.com/octo_051ff91908.jpg?width=320"
+    ]
+  },
+  {
+    "id": 52,
+    "title": "Soldado Espartano, porta incienso",
+    "description": "Figura pintada detalladamente a mano. Altura aproximada: 15 cm",
+    "price": 15000,
+    "rating": 5,
+    "category": "DECORACION PARA EL HOGAR",
+    "thumbnail": "https://stlflix.b-cdn.net/434775729_1506278223570315_7807210412808125010_n_03c6638be0.jpg?width=320",
+    "images": [
+      "https://stlflix.b-cdn.net/434775729_1506278223570315_7807210412808125010_n_03c6638be0.jpg?width=320",
+      "https://stlflix.b-cdn.net/Et_Tu_Brute_Incense_Holder2_466d913cf9.jpg?format=webp&width=700",
+      "https://stlflix.b-cdn.net/Et_Tu_Brute_Incense_Holder1_05ef3358d1.jpg?format=webp&width=700"
+    ]
+  },
+  {
+    "id": 53,
+    "title": "Huevo de Dragón - Fuego",
+    "description": "Figura pintada detalladamente a mano.Con dinosaurio incluido. Altura aproximada: 15 cm",
+    "price": 15000,
+    "rating": 5,
+    "category": "IDEAS PARA REGALAR",
+    "thumbnail": "https://stlflix.b-cdn.net/IMG_20230929_212303_e675da7283.jpg?width=320",
+    "images": [
+      "https://stlflix.b-cdn.net/4347https://stlflix.b-cdn.net/IMG_20230929_212303_e675da7283.jpg?width=320",
+      "https://stlflix.b-cdn.net/PXL_20230716_121525997_405ea016b2.jpg?width=320",
+      "https://stlflix.b-cdn.net/Screenshot_2023_07_05_175700_9f8a0402ee.jpg?width=320"
     ]
   }
 ]
