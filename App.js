@@ -6,6 +6,7 @@ import { Provider } from "react-redux"
 import store from "./src/store"
 import { initSQLiteDB } from "./src/persistence"
 
+
 (async () => {
   try {
     const response = await initSQLiteDB()
@@ -26,10 +27,10 @@ const App = () => {
   if (fontsLoaded && !fontError) {
     return (
       <SafeAreaView style={styles.container}>
-
-        <Provider store={store}>
-          <Navigator />
-        </Provider>
+          <Provider store={store}>
+            <Navigator />
+          </Provider>
+        <StatusBar/>
       </SafeAreaView>
     )
   }

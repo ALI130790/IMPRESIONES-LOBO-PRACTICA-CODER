@@ -7,6 +7,7 @@ import { useSignInMutation } from '../services/authService'
 import { setUser } from "../features/User/userSlice"
 import { useDispatch } from "react-redux"
 import { insertSession } from "../persistence"
+import Carousel from "../components/carousel/Carousel"
 
 const LoginScreen = ({ navigation }) => {
     const dispatch = useDispatch()
@@ -31,7 +32,6 @@ const LoginScreen = ({ navigation }) => {
                     )
                 })
                 .catch((err) => {
-                    console.log(err)
                 })
         }
     }, [result])
@@ -42,16 +42,17 @@ const LoginScreen = ({ navigation }) => {
 
     return (
         <View style={styles.main}>
+            <Carousel/>
             <View style={styles.container}>
+                <Text style={styles.title}>BIENVENIDO</Text>
                 <Text style={styles.title}>Inicia sesión para comenzar</Text>
-
                 <InputForm
-                    label={"email"}
+                    label={"Email:"}
                     onChange={setEmail}
                     error={""}
                 />
                 <InputForm
-                    label={"password"}
+                    label={"Contraseña:"}
                     onChange={setPassword}
                     error={""}
                     isSecure={true}
@@ -74,7 +75,7 @@ export default LoginScreen
 const styles = StyleSheet.create({
     main: {
         width: "100%",
-        height: "100%",
+        height: "99%",
         justifyContent: "center",
         alignItems: "center",
     },
@@ -83,21 +84,19 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: colors.platinum,
-        gap: 15,
-        paddingVertical: 20,
+        gap: 13,
+        paddingVertical: 10,
         borderRadius: 10,
     },
     title: {
         fontSize: 22,
-
     },
     sub: {
-        fontSize: 14,
+        fontSize: 18,
         color: "black",
     },
     subLink: {
-        fontSize: 14,
+        fontSize: 16,
         color: "blue",
     },
 })

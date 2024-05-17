@@ -1,4 +1,4 @@
-import { FlatList, StyleSheet, Text, View } from "react-native"
+import { FlatList, StyleSheet, View } from "react-native"
 import { colors } from "../constants/colors"
 import ProductItem from "../components/ProductItem"
 import Search from "../components/Search"
@@ -74,6 +74,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 10
+    padding: 20,
+   
   },
 })

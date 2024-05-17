@@ -1,26 +1,19 @@
-import { 
-  Button, 
-  Image, 
-  StyleSheet, 
-  Text, 
-  View, 
-  useWindowDimensions 
-} from "react-native"
 import React, { useEffect, useState } from "react"
-import { useDispatch } from "react-redux"
-import { addCartItem } from "../features/Cart/cartSlice"
+import { Button, Image, StyleSheet, Text, View, useWindowDimensions } from "react-native"
+import { useDispatch, useSelector } from "react-redux"
 import { useGetProductByIdQuery } from "../services/shopService"
+import { addCartItem } from "../features/Cart/cartSlice"
+import Counter from "../components/Counter"
+import {reset} from "../features/Counter/counterSlice"
 
 const ItemDetail = ({ route, navigation }) => {
 
   const dispatch = useDispatch()
-
   const [orientation, setOrientation] = useState("portrait")
+  const { productId} = route.params
   const { width, height } = useWindowDimensions()
-
-  const { productId: idSelected } = route.params
-
-  const {data: product, error, isLoading} = useGetProductByIdQuery(idSelected)
+  const count = useSelector(state => state.counterReducer.value)
+  const {data: product} = useGetProductByIdQuery(productId)
 
   useEffect(() => {
     if (width > height) setOrientation("landscape")
@@ -28,7 +21,8 @@ const ItemDetail = ({ route, navigation }) => {
   }, [width, height])
 
   const handleAddCart = () => {
-    dispatch(addCartItem({...product, quantity: 1}))
+    dispatch(addCartItem({...product, quantity: count}));
+    dispatch(reset());
   }
 
   return (
@@ -48,10 +42,13 @@ const ItemDetail = ({ route, navigation }) => {
             resizeMode="cover"
           />
           <View style={orientation === "portrait" ? styles.textContainer : styles.textContainerLandscape}>
+            
             <Text>{product.title}</Text>
             <Text>{product.description}</Text>
             <Text style={styles.price}>${product.price}</Text>
             <Button title="Agregar al carrito" onPress={handleAddCart}></Button>
+          
+            <Counter count={count} handleAddCart={handleAddCart} />
           </View>
         </View>
       ) : null}
@@ -67,16 +64,17 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "flex-start",
     padding: 10,
-    gap: 10,
+    gap: 20,
   },
   mainContainerLandscape: {
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "flex-start",
-    padding: 10,
+    padding: 20,
+    
   },
   image: {
-    width: '80%',
+    width: '100%',
     height: '60%',
   },
   imageLandscape: {
@@ -84,10 +82,12 @@ const styles = StyleSheet.create({
     height: 350,
   },
   textContainer: {
+    fontSize: 18,
     flexDirection: "column",
     gap: 10,
   },
   textContainerLandscape: {
+    fontSize: 18,
     width: '50%',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -96,6 +96,7 @@ const styles = StyleSheet.create({
   },
   price: {
     textAlign: 'right',
-    width: '100%'
-  }
+    width: '100%',
+    fontSize: 18,
+  },
 })

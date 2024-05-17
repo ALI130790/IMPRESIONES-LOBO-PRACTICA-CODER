@@ -38,11 +38,11 @@ const Counter = () => {
                     style={styles.button}
                     onPress={()=> dispatch(incrementByAmount(Number(inputToAdd)))}
                 >
-                    <Text style={styles.buttonText}>Add</Text>
+                    <Text style={styles.buttonText}>Agregar</Text>
                 </Pressable>
             </View>
             <Pressable style={styles.button} onPress={()=>dispatch(reset())}>
-                <Text style={styles.buttonText}>Reset</Text>
+                <Text style={styles.buttonText}>Reiniciar</Text>
             </Pressable>
         </View>
     );

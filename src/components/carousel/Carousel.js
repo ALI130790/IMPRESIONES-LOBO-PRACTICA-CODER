@@ -2,7 +2,6 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import {
   StyleSheet,
-  Text,
   View,
   Image,
   Dimensions,
@@ -26,8 +25,8 @@ const height = Dimensions.get("window").height;
 
 const ANCHO_CONTENEDOR = width * 0.7;
 const ESPACIO_CONTENEDOR = (width - ANCHO_CONTENEDOR) / 2;
-const ESPACIO = 10;
-const ALTURA_BACKDROP = height * 0.5;
+const ESPACIO = 6;
+const ALTURA_BACKDROP = height * 0.4;
 
 function Backdrop({ scrollX }) {
   return (
@@ -97,12 +96,12 @@ export default function Carousel() {
         horizontal={true}
         snapToAlignment="start"
         contentContainerStyle={{
-          paddingTop: 80,
+          paddingTop: 70,
           paddingHorizontal: ESPACIO_CONTENEDOR,
         }}
         snapToInterval={ANCHO_CONTENEDOR}
         decelerationRate={0}
-        scrollEventThrottle={16}
+        scrollEventThrottle={6}
         data={imagenes}
         keyExtractor={(item) => item}
         renderItem={({ item, index }) => {
@@ -133,10 +132,6 @@ export default function Carousel() {
                   source={{ uri: item }}
                   style={styles.posterImage}
                 />
-                <Text style={{ fontWeight: "bold", fontSize: 26 }}>
-                  {" "}
-                  Título
-                </Text>
               </Animated.View>
             </View>
           );
@@ -153,12 +148,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   posterImage: {
-    width: "100%",
-    height: ANCHO_CONTENEDOR * 1.2,
+    width: "90%",
+    height: ANCHO_CONTENEDOR *1,
     resizeMode: "cover",
     borderRadius: 24,
-    margin: 0,
-    marginBottom: 10,
-
   },
 })

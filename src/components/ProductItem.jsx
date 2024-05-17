@@ -44,18 +44,20 @@ const styles = StyleSheet.create({
   },
   additionalStylesCard: {
     height: 120,
-    width: 300,
+    width: 350,
     margin: 10,
   },
   textCategory: {
     width: "70%",
-    color: colors.teal200,
+    color: colors.platinum,
+    fontSize: 20,
   },
   pressable: {
     width: "100%",
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingLeft: 10,
+    paddingLeft: 15,
+    
   },
 })
