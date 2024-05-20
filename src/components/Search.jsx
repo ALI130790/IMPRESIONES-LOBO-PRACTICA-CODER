@@ -14,7 +14,7 @@ const Search = ({ onSearch = () => { }, error = "", goBack = () => { } }) => {
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
-          placeholder="Search..."
+          placeholder="Buscar..."
           value={keyword}
           onChangeText={setKeyword}
         />
@@ -47,19 +47,19 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: 'center',
     alignItems: 'start',
-    gap: 4,
-    width: '70%',
+    gap: 8,
+    width: '60%',
   },
   input: {
     padding: 8,
     fontSize: 18,
-    backgroundColor: colors.teal400,
+    backgroundColor: colors.teal200,
     color: colors.platinum,
     borderRadius: 10,
   },
   errorText: {
-    color: 'tomato',
-    fontSize: 14,
+    color: 'red',
+    fontSize: 18,
     fontFamily: 'Josefin'
   }
 })

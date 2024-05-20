@@ -2,14 +2,14 @@ import { FlatList, StyleSheet, Text, View } from "react-native"
 import { colors } from "../constants/colors"
 import CategoryItem from "../components/CategoryItem"
 import { useGetCategoriesQuery } from "../services/shopService"
+import ShopLayout from "../components/ShopLayout"
 
 const Home = ({route, navigation }) => {
   const {data: categories, error, isLoading} = useGetCategoriesQuery()
 
   return (
 
-    <View style={styles.flatListContainer}>
-     
+    <ShopLayout>
       <FlatList
         showsVerticalScrollIndicator={false}
         keyExtractor={(elementoDeArray) => elementoDeArray}
@@ -21,7 +21,7 @@ const Home = ({route, navigation }) => {
           />
         )}
       />
-    </View>
+    </ShopLayout>
   )
 }
 
@@ -30,7 +30,7 @@ export default Home
 const styles = StyleSheet.create({
   flatListContainer: {
     width: '100%',
-    backgroundColor: colors.teal400,
+    backgroundColor: colors.platinum,
     height: '100%',
     flex: 1,
     flexDirection: 'column',

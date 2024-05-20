@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from "react"
 import { Button, Image, StyleSheet, Text, View, useWindowDimensions } from "react-native"
+import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { useGetProductByIdQuery } from "../services/shopService"
 import { addCartItem } from "../features/Cart/cartSlice"
+import { useGetProductByIdQuery } from "../services/shopService"
 import Counter from "../components/Counter"
-import {reset} from "../features/Counter/counterSlice"
+import { colors } from "../constants/colors"
 
 const ItemDetail = ({ route, navigation }) => {
 
+  const count = useSelector(state => state.counter.value)
   const dispatch = useDispatch()
   const [orientation, setOrientation] = useState("portrait")
-  const { productId} = route.params
   const { width, height } = useWindowDimensions()
-  const count = useSelector(state => state.counterReducer.value)
-  const {data: product} = useGetProductByIdQuery(productId)
+  const { productId: idSelected } = route.params
+  const { data: product } = useGetProductByIdQuery(idSelected)
 
   useEffect(() => {
     if (width > height) setOrientation("landscape")
@@ -21,8 +21,7 @@ const ItemDetail = ({ route, navigation }) => {
   }, [width, height])
 
   const handleAddCart = () => {
-    dispatch(addCartItem({...product, quantity: count}));
-    dispatch(reset());
+    dispatch(addCartItem({ ...product, quantity: 1 }))
   }
 
   return (
@@ -42,16 +41,15 @@ const ItemDetail = ({ route, navigation }) => {
             resizeMode="cover"
           />
           <View style={orientation === "portrait" ? styles.textContainer : styles.textContainerLandscape}>
-            
+
             <Text>{product.title}</Text>
             <Text>{product.description}</Text>
             <Text style={styles.price}>${product.price}</Text>
             <Button title="Agregar al carrito" onPress={handleAddCart}></Button>
-          
-            <Counter count={count} handleAddCart={handleAddCart} />
           </View>
         </View>
       ) : null}
+      <Counter />
     </View>
   )
 }
@@ -60,6 +58,7 @@ export default ItemDetail
 
 const styles = StyleSheet.create({
   mainContainer: {
+    backgroundColor: colors.teal200,
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "flex-start",
@@ -71,24 +70,24 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "flex-start",
     padding: 20,
-    
   },
   image: {
-    width: '100%',
-    height: '60%',
+    width: '60%',
+    height: '50%',
+
   },
   imageLandscape: {
     width: '40%',
     height: 350,
   },
   textContainer: {
-    fontSize: 18,
+    fontSize: 20,
     flexDirection: "column",
     gap: 10,
   },
   textContainerLandscape: {
-    fontSize: 18,
-    width: '50%',
+    fontSize: 20,
+    width: '30%',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'start',
@@ -97,6 +96,6 @@ const styles = StyleSheet.create({
   price: {
     textAlign: 'right',
     width: '100%',
-    fontSize: 18,
+    fontSize: 20,
   },
 })

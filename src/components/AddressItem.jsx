@@ -18,7 +18,7 @@ const AddressItem = ({ location, navigation }) => {
             </View>
             <Pressable onPress={onChangeLocation}>
                 <Entypo name="location" size={30} color="black">
-                    <Text style={styles.text2}>Change</Text>
+                    <Text style={styles.text2}>Cambiar</Text>
                 </Entypo>
             </Pressable>
         </View>

@@ -1,11 +1,15 @@
 export const colors = {
+    teal1000: '#0F0F0F',
+
     teal900: '#070F2B',
 
-    teal600: '#1B1A55',
+    teal600: '#06283D',
 
-    teal400: '#535C91',
+    teal400: '#344C64',
 
-    teal200: '#9290C3',
-    
-    platinum: '#E0E1DD'
+    teal200: '#67C6E3',
+
+    teal100: '#DFF6FF',
+
+    platinum: '#FFFFFF'
 }
