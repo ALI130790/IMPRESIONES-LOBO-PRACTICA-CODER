@@ -1,6 +1,5 @@
-import { Pressable, StyleSheet, Text, View } from "react-native"
+import { Pressable, StyleSheet, Text, View, Platform } from "react-native"
 import React, { useState, useEffect } from "react"
-import { colors } from "../constants/colors"
 import InputForm from "../components/inputForm"
 import SubmitButton from "../components/submitButton"
 import { useSignInMutation } from '../services/authService'
@@ -16,13 +15,17 @@ const LoginScreen = ({ navigation }) => {
     const [password, setPassword] = useState()
 
     useEffect(() => {
+
         if (result?.data && result.isSuccess) {
-            insertSession({
-                email: result.data.email,
-                localId: result.data.localId,
-                token: result.data.idToken,
-            })
-                .then((response) => {
+            (async () => {
+                try {
+                    if (Platform.OS !== 'web') {
+                        const response = await insertSession({
+                            email: result.data.email,
+                            localId: result.data.localId,
+                            token: result.data.idToken,
+                        })
+                    }
                     dispatch(
                         setUser({
                             email: result.data.email,
@@ -30,9 +33,10 @@ const LoginScreen = ({ navigation }) => {
                             localId: result.data.localId,
                         })
                     )
-                })
-                .catch((err) => {
-                })
+                } catch (error) {
+
+                }
+            })()
         }
     }, [result])
 
@@ -42,7 +46,7 @@ const LoginScreen = ({ navigation }) => {
 
     return (
         <View style={styles.main}>
-            <Carousel/>
+            <Carousel />
             <View style={styles.container}>
                 <Text style={styles.title}>BIENVENIDO</Text>
                 <Text style={styles.title}>Inicia sesión para comenzar</Text>

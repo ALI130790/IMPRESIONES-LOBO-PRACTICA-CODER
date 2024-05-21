@@ -9,7 +9,10 @@ import { initSQLiteDB } from "./src/persistence"
 
 (async () => {
   try {
-    const response = await initSQLiteDB()
+    if (Platform.OS !== 'web') {
+
+      const response = await initSQLiteDB()
+    }
   } catch (error) {
 
   }
@@ -27,10 +30,10 @@ const App = () => {
   if (fontsLoaded && !fontError) {
     return (
       <SafeAreaView style={styles.container}>
-          <Provider store={store}>
-            <Navigator />
-          </Provider>
-        <StatusBar/>
+        <Provider store={store}>
+          <Navigator />
+        </Provider>
+        <StatusBar />
       </SafeAreaView>
     )
   }

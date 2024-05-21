@@ -255,3 +255,5 @@ xcuserdata/
 *.xccheckout
 
 # End of https://www.toptal.com/developers/gitignore/api/reactnative
+# Local Netlify folder
+.netlify

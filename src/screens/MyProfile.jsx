@@ -1,4 +1,4 @@
-import { Image, StyleSheet, View } from "react-native";
+import { Image, StyleSheet, View, Platform } from "react-native";
 import React from "react";
 import AddButton from "../components/AddButton";
 import { useSelector, useDispatch } from "react-redux";
@@ -20,8 +20,12 @@ const MyProfile = ({ navigation }) => {
         navigation.navigate('List Address')
     }
     const signOut = async () => {
-        const response = await truncateSessionsTable()
-        dispatch(clearUser())
+        try {
+            if (Platform.OS !== 'web') await truncateSessionsTable()
+            dispatch(clearUser())
+        } catch (error) {
+
+        }
     }
 
     const defaultImageRoute = "../../assets/images/defaultProfile.png"
